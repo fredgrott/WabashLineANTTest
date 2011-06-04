@@ -1,6 +1,6 @@
-package com.mobilebytes.wabashlineant.test;
+package com.fredgrott.wabashlineant.test;
 
-import com.mobilebytes.wabashlineant.MainActivity;
+import com.fredgrott.wabashlineant.MainActivity;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.MediumTest;

@@ -948,18 +948,23 @@
 	            <report sourcepath="${tested.project.absolute.dir}/${source.dir}"
 	                              verbosity="${verbosity}">
 	                <!-- TODO: report.dir or something like should be introduced if necessary -->
-	                <infileset dir=".">
-	                    <include name="coverage.ec" />
-	                    <include name="coverage.em" />
-	                </infileset>
+	            	<!-- per sdk 11/adt 10.01 its wrong
+	            	-->
+	            	<infileset file="${tested.project.absolute.dir}/build/docs/coverage.ec" />
+	            	<infileset file="${tested.project.absolute.dir}/coverage.em"/>
+
+
 	                <!-- TODO: reports in other, indicated by user formats -->
-	                <html outfile="coverage.html" />
+	                <html outfile="${tested.project.absolute.dir}/build/docs/coverage.html" />
 	           </report>
 	        </emma>
 	        <echo>Cleaning up temporary files...</echo>
 	        <delete dir="${instrumentation.absolute.dir}" />
-	        <delete file="coverage.ec" />
-	        <delete file="coverage.em" />
+	    	<!-- coverage.ec file appears in build/docs and
+	    	     coverage.em appears in app project/root
+	    	     thus we need to specify location-->
+	        <delete file="${tested.project.absolute.dir}/build/docs/coverage.ec" />
+	        <delete file="${tested.project.absolute.dir}/coverage.em" />
 	        <echo>Saving the report file in ${basedir}/coverage/coverage.html</echo>
 	    </target>
 
